@@ -1,0 +1,219 @@
+﻿Cosas que pueden estar dentro de una clase:
+
+
+Dentro de una clase en C#, puedes incluir diversos elementos que permiten estructurar y organizar el comportamiento y los datos. Aquí te doy una lista de las cosas que pueden estar dentro de una clase:
+
+1. Constructores
+Son métodos especiales que se ejecutan cuando se crea una instancia de la clase:
+
+Constructores por defecto (generados automáticamente si no defines uno).
+Constructores sobrecargados (con diferentes parámetros).
+Constructores estáticos (para inicializar propiedades estáticas).
+
+2. Métodos
+Puedes definir métodos que representen comportamientos o acciones:
+
+Métodos públicos (accesibles desde fuera de la clase).
+Métodos privados (solo accesibles dentro de la clase).
+Métodos protegidos (accesibles desde la clase y las clases derivadas).
+Métodos internos (accesibles dentro del mismo ensamblado).
+Métodos estáticos (pertenecen a la clase, no a una instancia).
+Métodos abstractos (definidos en clases abstractas, implementados en clases derivadas).
+Métodos virtuales (pueden ser sobrescritos por clases derivadas).
+
+3. Propiedades
+Son miembros que controlan el acceso a campos de datos:
+
+Propiedades públicas y privadas (dependiendo de la visibilidad).
+Propiedades automáticas (sin necesidad de definir un campo explícito).
+Propiedades con lógica de acceso (mediante get y set).
+Propiedades solo de lectura (get sin set).
+Propiedades estáticas (pertenecen a la clase, no a la instancia).
+
+4. Campos (variables)
+Son las variables que almacenan datos:
+
+Campos públicos (evitar en lo posible el uso público directo, es mejor usar propiedades).
+Campos privados (solo accesibles dentro de la clase).
+Campos readonly (su valor solo puede establecerse en el constructor o durante la declaración).
+Campos estáticos (pertenecen a la clase y no a una instancia).
+
+5. Eventos
+Los eventos permiten que una clase notifique a otras clases cuando algo ocurre:
+
+Eventos públicos y privados (dependiendo de quién debe estar suscrito).
+Delegados (para manejar eventos personalizados).
+
+6. Clases anidadas
+Puedes definir clases dentro de otras clases:
+
+Clases anidadas públicas o privadas (la clase anidada solo es accesible dentro de la clase contenedora si es privada).
+
+7. Interfaces implementadas
+Una clase puede implementar interfaces para asegurar que contiene ciertos métodos o propiedades:
+
+Implementación de interfaces (una clase puede implementar una o más interfaces).
+
+8. Herencia
+Puedes extender una clase base con una clase derivada, lo que te permite reutilizar código:
+
+Clases derivadas (class A : B hereda de B).
+Métodos y propiedades sobrescritos (usando override).
+
+9. Enumeraciones
+Puedes definir enumeraciones (enum) dentro de una clase para limitar los posibles valores de un tipo de dato.
+
+public enum Color { Rojo, Verde, Azul }
+
+10. Estructuras (structs)
+Puedes definir estructuras dentro de una clase:
+
+Las estructuras son tipos por valor y pueden contener datos similares a las clases, pero son más ligeras.
+
+11. Delegados
+Un delegado es una referencia a un método:
+
+Delegados públicos y privados para definir tipos de métodos que se pueden pasar como parámetros o invocar.
+
+12. Indexadores
+Permiten que una clase se comporte como un array:
+
+public int this[int index] 
+{
+    get { return elementos[index]; }
+    set { elementos[index] = value; }
+}
+
+
+13. Operadores
+Puedes sobrecargar operadores en tu clase para personalizar el comportamiento de operadores como +, -, ==, etc.
+
+public static MiClase operator +(MiClase a, MiClase b)
+{
+    return new MiClase(a.valor + b.valor);
+}
+
+14. Atributos
+Los atributos proporcionan metadatos adicionales a clases, métodos, o propiedades:
+
+[Obsolete("Este método está obsoleto.")]
+public void MiMetodo()
+{
+    // Código
+}
+
+
+15. Bloques de inicialización de instancias o estáticos
+Son bloques de código que se ejecutan justo antes de que un constructor sea invocado:
+
+static MiClase()
+{
+    // Bloque estático: se ejecuta una sola vez, al cargar la clase
+}
+
+16. Clases parciales
+Una clase puede estar dividida en varios archivos, lo que permite organizar mejor el código, especialmente en grandes proyectos:
+
+public partial class MiClase
+{
+    // Parte de la clase en un archivo
+}
+
+17. Excepciones personalizadas
+Puedes crear clases que heredan de Exception para definir tus propias excepciones personalizadas.
+
+Ejemplo con varios elementos dentro de una clase:
+
+public class Persona : SerHumano, ITrabajador
+{
+    // Campos privados
+    private string nombre;
+    private int edad;
+
+    // Campo estático
+    public static int NumeroDePersonas;
+
+    // Constructor
+    public Persona(string nombre, int edad)
+    {
+        this.nombre = nombre;
+        this.edad = edad;
+        NumeroDePersonas++;
+    }
+
+    // Propiedad pública
+    public string Nombre
+    {
+        get { return nombre; }
+        set { nombre = value; }
+    }
+
+    // Método público
+    public void Hablar()
+    {
+        Console.WriteLine($"{nombre} está hablando.");
+    }
+
+    // Método privado
+    private void Pensar()
+    {
+        Console.WriteLine($"{nombre} está pensando.");
+    }
+
+    // Implementación de un método de la interfaz ITrabajador
+    public void Trabajar()
+    {
+        Console.WriteLine($"{nombre} está trabajando.");
+    }
+
+    // Evento
+    public event Action AlCumplirAños;
+
+    // Método que lanza el evento
+    public void CumplirAños()
+    {
+        edad++;
+        AlCumplirAños?.Invoke();
+    }
+
+    // Clase anidada
+    private class Direccion
+    {
+        public string Calle { get; set; }
+    }
+}
+
+Resumen:
+En una clase puedes tener:
+
+Constructores
+Métodos (públicos, privados, estáticos, etc.)
+Propiedades (públicas, privadas, estáticas, con lógica get/set)
+Campos (variables)
+Eventos
+Clases anidadas
+Implementación de interfaces
+Herencia
+Enumeraciones, estructuras, delegados
+Sobrecarga de operadores
+Atributos
+Bloques de inicialización
+Clases parciales
+
+## Inyeccion de dependencias por clave(key)
+## Ej: 2 clientes, web, app se conectarn a un Controller
+## Son tres tipos:
+
+1 - Singleton ---> El objeto sera el mismo: A1...A1, tanto para el cliente 1 como para el 2, 
+                    si hay solicitudes extras va a seguir siendo el mismo objeto
+
+2 - Scoped ---> El objeto va ser distinto en cada solicitud: A1...A2
+                Si nos conectamos desde una web que esta en Cuba y nos conectamos 
+                con otra app desde Inglaterra el objeto sera diferente()
+
+3 - Transient ---> Se puede hace uso de un objeto inyectado varias
+                   veces en nuestro constructor, podemos tener en la
+                   misma solicitud objetos del mismo tipo de clase
+                   pero esos objetos serian distintos en la misma solicitud: A1...A2...A3
+                   Es decir en cuando a la solitud podemos tener tres objetos distintos
+                   de la misma clase

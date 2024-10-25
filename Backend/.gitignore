@@ -1,0 +1,16 @@
+# Ignorar archivos y carpetas de Visual Studio
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.log
+
+# Archivos generados por el sistema operativo
+Thumbs.db
+.DS_Store
+
+.vs/*
+**/.vs/
+**/.vs/*

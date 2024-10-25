@@ -1,0 +1,8 @@
+﻿DB
+## Migration of data
+Console:
+
+PM> Add-Migration InitDB // When we didn't any migration yet
+PM> Update-Database
+PM> Add-Migration AlcoholInBeer // Here we can insertar new migration with any name
+PM> Remove-Migration // To revert the migration
