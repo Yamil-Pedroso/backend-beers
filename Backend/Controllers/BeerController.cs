@@ -20,7 +20,7 @@ namespace Backend.Controllers
          
             IValidator<BeerInsertDto> beerInsertValidator, 
             IValidator<BeerUpdateDto> beerUpdateValidator, 
-            ICommonService<BeerDto, BeerInsertDto, BeerUpdateDto> beerService
+            [FromKeyedServices("beerService")] ICommonService<BeerDto, BeerInsertDto, BeerUpdateDto> beerService
            )
         {
            
