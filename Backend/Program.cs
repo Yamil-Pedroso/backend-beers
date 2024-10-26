@@ -1,5 +1,6 @@
 using Backend.DTOs;
 using Backend.Models;
+using Backend.Repository;
 using Backend.Services;
 using Backend.Validators;
 using FluentValidation;
@@ -27,6 +28,9 @@ builder.Services.AddScoped<IPostsService, PostsService>();
 
 // Inyeccion Scoped to BeerService
 builder.Services.AddKeyedScoped<ICommonService<BeerDto, BeerInsertDto, BeerUpdateDto>, BeerService>("beerService");
+
+// Repositories
+builder.Services.AddScoped<IRepository<Beer>, BeerRepository>();
 
 // HttpClient service jsonplaholder
 builder.Services.AddHttpClient<IPostsService, PostsService>(c =>
